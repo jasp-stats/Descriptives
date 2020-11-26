@@ -224,7 +224,7 @@ Descriptives <- function(jaspResults, dataset, options) {
       jaspResults[["heatmaps"]]$dependOn(c("heatmapHorizontal", "heatmapVertical",
                                            "heatmapPlotValue", "heatmapRectangleRatio",
                                            "heatmapStatisticContinuous", "heatmapStatisticDiscrete",
-                                           "colorPalette", "splitBy"))
+                                           "colorPalette", "splitBy", "variables"))
       jaspResults[["heatmaps"]]$position <- 12
     }
 
@@ -1561,7 +1561,7 @@ Descriptives <- function(jaspResults, dataset, options) {
   axesNames <- c(options[["heatmapHorizontal"]], options[["heatmapVertical"]])
 
   # we are not ready to plot
-  if(length(variables) == "" || any(axesNames == "")) return()
+  if(length(variables) == 0 || any(axesNames == "")) return()
 
   axes <- .readDataSetToEnd(columns.as.factor = encodeColNames(axesNames))
 
